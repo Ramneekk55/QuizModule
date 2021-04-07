@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title> Answer Key </title>
+        <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+    function calc(){
+    var name=localStorage.getItem("count");
+    document.getElementById("header").innerHTML="Score: "+name;
+    }
+    function Restart(){
+        window.location.href = "index.html";
+    }
+</script> 
+<style>
+      #header{
+          height:50px;
+          width:100%;
+          text-align:center;
+          font-size:30px;
+      }
+      h3,#res{
+          margin-left:15px;
+      }
+      
+  </style>
+
+    </head>
+    <body style="background-color:#ebebe0;" onload="calc()">
+        <div class="container">
+        <div class="bg-dark text-white" id="header"></div>
+        </div><br><h3>Answer Key</h3><br>
+         
+    <div class="container">
+        <div class="card">
+    <div class="card-body">
+        <ul><li>Which one of the following also known as Conditional Expression: <button class="btn btn-success btn-sm p-1 text-white"><b>immediate-if</b></button></li><br>
+            <li>In JavaScript, what is a block of statement?- <button class="btn btn-success btn-sm p-1 text-white"><b>block that combines a number of statements into a single compound statement</b></button></li><br>
+            <li>Which type of JavaScript language is ___<button class="btn btn-success btn-sm p-1 text-white"><b>Object-based</b></button></li><br>
+            <li>When interpreter encounters an empty statements, what it will do: <button class="btn btn-success btn-sm p-1 text-white"><b>Ignores the statements</b></button></li><br>
+            <li>The function and var are known as: <button class="btn btn-success btn-sm p-1 text-white"><b>Declaration statements</b></button></li><br>
+            <li>Which of the following variables takes precedence over the others if the names are the same?<button class="btn btn-success btn-sm p-1 text-white"><b>The local element</b></button></li><br>
+            <li> Which one of the following is the correct way for calling the JavaScript code? <button class="btn btn-success btn-sm p-1 text-white"><b>Function/Method</b></button></li><br>
+            <li>Which of the following type of a variable is volatile?  <button class="btn btn-success btn-sm p-1 text-white"><b>Mutable variable</b></button></li><br>
+            <li>When there is an indefinite or an infinite value during an arithmetic computation in a program, then JavaScript prints______.  <button class="btn btn-success btn-sm p-1 text-white"><b>Display "infinity"</b></button></li><br>
+            <li>In the JavaScript, which one of the following is not considered as an error:  <button class="btn btn-success btn-sm p-1 text-white"><b>Division by zero</b></button></li><br>
+        </ul>
+                <button type="button" class="btn btn-primary" id="res" onclick="Restart()">Restart</button>
+    </div>
+        </div>
+    </div>
+    </body>
+    </html>

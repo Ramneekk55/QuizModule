@@ -1,0 +1,284 @@
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+      #header{
+          height:50px;
+          width:100%;
+          text-align:center;
+          font-size:30px;
+      }
+      #answer{
+          margin-left:15px;
+      }
+  </style>
+
+</head>
+<body style="background-color:#ebebe0;" onload="showQuestions()">
+    <div class="container">
+        <div class="bg-dark text-white" id="header">Quiz</div>
+        </div><br><div id="answer"<br>
+         
+    <div class="container">
+        <div class="card">
+    <div class="card-body">
+        <div id="ans"></div>
+        <h4 id="ques"></h4>
+        <div id="option11">
+        </div>
+         <div id="option22">
+        </div>
+         <div id="option33">
+        </div>
+         <div id="option44">
+        </div>
+        <br><p id="display"></p>
+        <p id="res"></p>
+        <br>
+        <button type="button" id="submit" class="btn btn-warning" onclick="check()"></button>    
+    </div>
+    </div>
+  </div>
+  <script>
+      var currentQues=0;
+      var correctAns=0;
+      var total=0;
+       var myQuestions = [
+     {
+		question: "1. Which one of the following also known as Conditional Expression:",
+		  options:{
+			a:'Alternative to if-else',
+			b:'Switch statement',
+			c:'If-then-else statement',
+            d:'immediate if'
+          },
+		correctAnswer: 'd'
+    },
+	 {
+		question: "2. In JavaScript, what is a block of statement?",
+		options:{
+	    a:'Conditional block',
+         b:'block that combines a number of statements into a single compound statement',
+		c:'both conditional block and a single statement',
+        d:'block that contains a single statement'
+        },
+		correctAnswer: 'b'
+    },
+    {
+		question: "3. Which type of JavaScript language is ___",
+		  options:{
+			a:'Object-oriented',
+			b:'Object-based',
+			c:'Assembly language',
+            d:'High-level'
+          },
+		correctAnswer: 'b'
+    },
+    {
+    question: "4. When interpreter encounters an empty statements, what it will do:",
+		  options:{
+			a:'Shows a warning',
+			b:'Prompts to complete the statement',
+			c:'Throws an error',
+            d:'Ignores the statements'
+          },
+		correctAnswer: 'd'
+    },
+    {
+    question: "5. The 'function' and 'var' are known as:",
+		  options:{
+			a:'Keywords',
+			b:'Data types',
+			c:'Declaration statements',
+            d:'Prototypes'
+          },
+		correctAnswer: 'c'
+    },
+    {
+    question: "6. Which of the following variables takes precedence over the others if the names are the same?",
+		  options:{
+			a:'Global variable',
+			b:'The local element',
+			c:'The two of the above',
+            d:'None of the above'
+          },
+		correctAnswer: 'b'
+    },
+    {
+    question: "7. Which one of the following is the correct way for calling the JavaScript code?",
+		  options:{
+			a:'Preprocessor',
+			b:'Triggering event',
+			c:'RMI',
+            d:'Function/Method'
+          },
+		correctAnswer: 'd'
+    },
+    {
+    question: "8. Which of the following type of a variable is volatile?",
+		  options:{
+			a:'Mutable variable',
+			b:'Dynamic variable',
+			c:'Volatile variable',
+            d:'Immutable variable'
+          },
+		correctAnswer: 'a'
+    },
+    {
+    question: "9. When there is an indefinite or an infinite value during an arithmetic computation in a program, then JavaScript prints______.",
+		  options:{
+			a:'Prints an exception error',
+			b:'Prints an overflow error',
+			c:'Displays "Infinity"',
+            d:'Prints the value as such'
+          },
+		correctAnswer: 'c'
+    },
+    {
+    question: "10. In the JavaScript, which one of the following is not considered as an error:",
+		  options:{
+			a:'Syntax error',
+			b:'Missing of semicolons',
+			c:'Division by zero',
+            d:'Missing of Bracket'
+          },
+		correctAnswer: 'c'
+    }
+];    
+      function showQuestions(){
+      if(currentQues==10){
+          seeResult();
+      }
+       var q=document.getElementById("ques");
+          var opt1=document.getElementById("option11");
+          var opt2=document.getElementById("option22");
+          var opt3=document.getElementById("option33");
+          var opt4=document.getElementById("option44");
+          var d=document.getElementById("submit");
+           var s=document.createElement("button");
+         d.innerHTML="Submit";
+         d.className="btn btn-warning";
+          document.getElementById("display").innerHTML="";
+          document.getElementById("display").className="btn btn-outline-light";
+         q.innerHTML=myQuestions[currentQues].question;
+         opt1.innerHTML="";
+         opt2.innerHTML="";
+         opt3.innerHTML="";
+         opt4.innerHTML="";
+  var radiobox1 = document.createElement('input');
+  radiobox1.setAttribute("type", "radio");
+  radiobox1.setAttribute("name","options");
+  radiobox1.setAttribute("id","option1");
+  opt1.appendChild(radiobox1);
+  var radiobox2 = document.createElement('input');
+  radiobox2.setAttribute("type", "radio");
+  radiobox2.setAttribute("name","options");
+  radiobox2.setAttribute("id","option2");
+  opt2.appendChild(radiobox2);
+  var radiobox3 = document.createElement('input');
+  radiobox3.setAttribute("type", "radio");
+  radiobox3.setAttribute("name","options");
+  radiobox3.setAttribute("id","option3");
+  opt3.appendChild(radiobox3);
+  var radiobox4 = document.createElement('input');
+  radiobox4.setAttribute("type", "radio");
+  radiobox4.setAttribute("name","options");
+  radiobox4.setAttribute("id","option4");
+  opt4.appendChild(radiobox4);
+
+var description1 = document.createTextNode(myQuestions[currentQues].options.a);
+  opt1.appendChild(description1);
+var description2 = document.createTextNode(myQuestions[currentQues].options.b);
+opt2.appendChild(description2);
+var description3 = document.createTextNode(myQuestions[currentQues].options.c);
+opt3.appendChild(description3);
+var description4 = document.createTextNode(myQuestions[currentQues].options.d);
+opt4.appendChild(description4);
+      }
+       function check(){
+           var d=document.getElementById("submit");
+          d.innerHTML="Next";
+          d.className="btn btn-success";
+          var flag=0;
+          var opt1=document.getElementById("option1");
+          var opt2=document.getElementById("option2");
+          var opt3=document.getElementById("option3");
+          var opt4=document.getElementById("option4");
+          if(opt1.checked){
+            if(myQuestions[currentQues].correctAnswer=='a'){
+                document.getElementById("display").innerHTML="correct"; 
+   document.getElementById("display").className="btn btn-outline-success";
+   correctAns++;   
+              }
+              else{
+                 document.getElementById("display").innerHTML="Incorrect";
+        document.getElementById("display").className="btn btn-outline-danger";
+              }
+          }
+          else if(opt2.checked){
+            if(myQuestions[currentQues].correctAnswer=='b'){
+                document.getElementById("display").innerHTML="correct"; 
+   document.getElementById("display").className="btn btn-outline-success"; 
+      correctAns++;  
+              }
+              else{
+                 document.getElementById("display").innerHTML="Incorrect";
+        document.getElementById("display").className="btn btn-outline-danger";
+              }
+          }
+          else if(opt3.checked){
+            if(myQuestions[currentQues].correctAnswer=='c'){
+                document.getElementById("display").innerHTML="correct"; 
+   document.getElementById("display").className="btn btn-outline-success";
+      correctAns++;   
+              }
+              else{
+                 document.getElementById("display").innerHTML="Incorrect";
+        document.getElementById("display").className="btn btn-outline-danger";
+              }
+          }
+          else if(opt4.checked){
+            if(myQuestions[currentQues].correctAnswer=='d'){
+                document.getElementById("display").innerHTML="correct"; 
+   document.getElementById("display").className="btn btn-outline-success";
+      correctAns++;   
+              }
+              else{
+                 document.getElementById("display").innerHTML="Incorrect";
+        document.getElementById("display").className="btn btn-outline-danger";
+              }
+          }
+          else {
+              alert("Please select an option");
+              flag=1;
+          }
+          if(flag==1){
+              showQuestions();
+          }
+          else{
+           d.innerHTML="Next";
+          d.className="btn btn-success";
+          currentQues++;
+          
+          d.addEventListener("click", function(){
+          });
+              setTimeout(showQuestions,500);//as next button was not visible  as showQuestions executed fastly,so setTimeout is used so that func showQuestions works after some time.
+          }
+       }
+       function Restart(){
+          currentQues=0;
+          showQuestions();
+       }    
+       function seeResult(){
+           localStorage.setItem("count", correctAns);
+           window.location.href = "answerKey.html";
+       }     
+      
+  </script>
+</body>
+
+3
